@@ -1,9 +1,14 @@
 import Image from 'next/image'
+import SliderMain from './(components)/SliderMain'
 
+const images = [
+  "/a.jpg",
+  "/b.jpg"
+]
 export default function Home() {
   return (
-    <main className="">
-      Hello
+    <main className="w-[100%]">
+      <SliderMain images={images}/>
     </main>
   )
 }
