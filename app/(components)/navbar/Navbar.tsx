@@ -10,9 +10,10 @@ import qs from 'query-string';
 
 interface UserMenuProps{
     myUser: SafeUser | null;
+    basketItems:any;
 }
 
-const Navbar = ({myUser}:UserMenuProps) => {
+const Navbar = ({myUser,basketItems}:UserMenuProps) => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('')
     const router = useRouter();
@@ -62,7 +63,7 @@ const Navbar = ({myUser}:UserMenuProps) => {
                     <div className="relative"> 
                         <Link href="/basket"><MdOutlineShoppingCart className="h-6 w-10"/></Link>
                         <div className="absolute -right-1 -bottom-2 bg-blue-500 rounded-full w-6 h-6 flex justify-center items-center text-white">
-                            3
+                            {basketItems.length}
                         </div>
                     </div>
                 </div>

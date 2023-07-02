@@ -1,12 +1,13 @@
 'use client'
-import { SafeCourse } from '@/types'
+import { SafeCourse, SafeUser } from '@/types'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
 interface CourseProps{
     data:SafeCourse,
-    key:string
+    key:string,
+    currentUser:SafeUser | null
 }
 const CourseComponent = ({data, key}:CourseProps) => {
     const router = useRouter();
