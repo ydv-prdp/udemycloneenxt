@@ -8,8 +8,8 @@ export const User = [
         link:"/basket"
     },
     {
-        name:"My course",
-        link:"/mycourse"
+        name:"My courses",
+        link:"/myCourses"
     },
     {
         name:"Messages",

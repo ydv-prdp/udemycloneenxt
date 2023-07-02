@@ -42,7 +42,7 @@ const Navbar = ({myUser,basketItems}:UserMenuProps) => {
         <div className="p-3 px-4">
             <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-6 flex-1 relative">
-                    <Link href='#'>Hello</Link>
+                    <Link href='/'>Coursify</Link>
                     <form className="lg:flex-1 lg:flex hidden" onClick={onSearch}>
                         <input 
                             type="text"

@@ -39,7 +39,7 @@ const SliderMain = ({images}:CarouselProps) => {
                 </div>
             )
             }
-            <button onClick={nextImage} className='absolute left-[2%] top-[50%] z-[40]'>
+            <button onClick={nextImage} className='absolute right-[2%] top-[50%] z-[40]'>
                 <BsArrowRight/>
             </button>
         </div>
