@@ -2,9 +2,11 @@
 
 import { SafeUser } from "@/types";
 import Link from "next/link"
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import {MdOutlineShoppingCart} from 'react-icons/md'
 import UserMenu from "./UserMenu";
+import { useRouter, useSearchParams } from "next/navigation";
+import qs from 'query-string';
 
 interface UserMenuProps{
     myUser: SafeUser | null;
@@ -12,8 +14,27 @@ interface UserMenuProps{
 
 const Navbar = ({myUser}:UserMenuProps) => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('')
+    const router = useRouter();
+    const params = useSearchParams();
     const closeUserMenu = () =>{
         setUserMenuOpen(false);
+    }
+    const onSearch = (e:FormEvent) =>{
+        e.preventDefault()
+        let currentQuery = {};
+        if(params){
+            currentQuery = qs.parse(params.toString())
+        }
+        const updatedQuery:any = {
+            ...currentQuery,
+            result:searchQuery
+        }
+        const url = qs.stringifyUrl({
+            url:'/',
+            query:updatedQuery
+        },{skipNull:true})
+        router.push(`/search/${url}`)
     }
   return (
     <div className="shadow-xl sticky bg-white z-[9999]">
@@ -21,10 +42,11 @@ const Navbar = ({myUser}:UserMenuProps) => {
             <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-6 flex-1 relative">
                     <Link href='#'>Hello</Link>
-                    <form className="lg:flex-1 lg:flex hidden">
+                    <form className="lg:flex-1 lg:flex hidden" onClick={onSearch}>
                         <input 
                             type="text"
-                            placeholder="Search for anything"
+                            placeholder="Search for"
+                            onChange={(e)=>setSearchQuery(e.target.value)}
                             className="w-full p-3 font-light bg-white rounded-full border-black border-[1px] outline-none"
                             />
                     </form>
