@@ -14,7 +14,9 @@ const UserMenu = ({currentUser, closeUserMenu}:UserMenuProps) => {
   return (
     <div className="flex flex-col h-[5ovh] bg-white shadow-lg right-0 rounded-lg px-4 py-2 gap-4">
         <div className="flex items-center gap-4">
-            <div className="w-[50px] h-[50px] rounded-full bg-black flex items-center justify-center text-white cursor-pointer">
+            <div className="w-[50px] h-[50px] rounded-full bg-black flex items-center justify-center text-white cursor-pointer"
+                onClick={()=>router.push('/user')}
+            >
                 <span>{currentUser?.name?.at(0)?.toUpperCase()}</span>
                 <span>{currentUser?.name?.at(1)?.toUpperCase()}</span>
             </div>

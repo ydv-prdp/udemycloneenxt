@@ -22,8 +22,8 @@ const CourseComponent = ({data, key}:CourseProps) => {
                 </div>
                 <div className='pt-1 px-1'>
                     <h3 className='text-[16px]'>{data.name}</h3>
-                    <span className='text-gray-400 block text-[9px] font-normal'>{data.author}</span>
-                    <span>{data.price}</span>
+                    <span className='text-gray-400 block text-[9px] font-normal'>Author: {data.author}</span>
+                    <span>Rs. {data.price}</span>
                 </div>
             </div>
         </div>

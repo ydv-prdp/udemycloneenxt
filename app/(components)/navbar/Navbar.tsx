@@ -21,20 +21,23 @@ const Navbar = ({myUser,basketItems}:UserMenuProps) => {
     const closeUserMenu = () =>{
         setUserMenuOpen(false);
     }
-    const onSearch = (e:FormEvent) =>{
-        e.preventDefault()
+    const onSearch = (e:FormEvent) => {
+        e.preventDefault();
+
         let currentQuery = {};
-        if(params){
+
+        if(params) {
             currentQuery = qs.parse(params.toString())
         }
         const updatedQuery:any = {
             ...currentQuery,
             result:searchQuery
         }
+
         const url = qs.stringifyUrl({
             url:'/',
-            query:updatedQuery
-        },{skipNull:true})
+            query: updatedQuery
+        }, {skipNull:true})
         router.push(`/search/${url}`)
     }
   return (
@@ -43,13 +46,14 @@ const Navbar = ({myUser,basketItems}:UserMenuProps) => {
             <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-6 flex-1 relative">
                     <Link href='/'>Coursify</Link>
-                    <form className="lg:flex-1 lg:flex hidden" onClick={onSearch}>
-                        <input 
-                            type="text"
-                            placeholder="Search for"
-                            onChange={(e)=>setSearchQuery(e.target.value)}
-                            className="w-full p-3 font-light bg-white rounded-full border-black border-[1px] outline-none"
-                            />
+                    <form className="lg:flex-1 lg:flex hidden" onSubmit={onSearch}>
+                        <input type="text" 
+                        placeholder="Search for anything ..."
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="
+                        w-full p-3 font-light bg-white rounded-full border-black border-[1px] outline-none
+                        "
+                        />
                     </form>
                 </div>
 

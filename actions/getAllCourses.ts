@@ -15,11 +15,11 @@ export default async function getAllCourses(params:any){
                 createdAt:'desc'
             }
         })
-        const safeCourse = course.map((course)=>({
+        const SafeCourse = course.map((course)=>({
             ...course,
             createdAt:course.createdAt.toISOString()
         }))
-        return safeCourse
+        return SafeCourse
     } catch(error:any){
         throw new Error(error)
     }  
